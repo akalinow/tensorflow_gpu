@@ -1,0 +1,11 @@
+# Use the official centos image as parent image
+FROM akalinow/tensorflow-gpu:latest
+
+# Define who is responsible for this Dockerifle
+MAINTAINER Artur Kalinowski <Artur.Kalinowski@fuw.edu.pl>
+
+USER root
+# Install software tools
+RUN pip3 install --upgrade dask
+
+USER jupyter
