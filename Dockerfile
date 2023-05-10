@@ -13,14 +13,13 @@ RUN apt -y install \
 	graphviz git
 
 # Install software tools
-#11.01.2022 RUN pip3 install --upgrade --force-reinstall absl-py==0.10.0
-RUN pip3 install --upgrade jupyterlab jupyter_contrib_nbextensions nodejs
+RUN pip3 install --upgrade jupyterlab jupyter_contrib_nbextensions nodejs rise
 RUN jupyter contrib nbextension install
 RUN pip3 install --upgrade pandas pyarrow fastparquet tables
 RUN pip3 install --upgrade graphviz pydot pydot_ng opencv-contrib-python-headless
-RUN pip3 install --upgrade sklearn scipy scikit-image scikit-hep
+RUN pip3 install --upgrade scikit-learn scipy scikit-image scikit-hep
 RUN pip3 install --upgrade seaborn plotly hide_code[lab] rise scikit-hep
-RUN pip3 install --upgrade uproot awkward dask
+RUN pip3 install --upgrade uproot awkward awkward-pandas dask
 RUN pip3 install --upgrade opencv-contrib-python-headless
 RUN pip3 install --upgrade tensorflow-model-analysis tensorflow-addons tensorflow-probability tensorflow-text
 RUN pip3 install --upgrade tensorboard_plugin_profile
