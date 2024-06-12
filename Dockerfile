@@ -29,10 +29,10 @@ RUN pip3 install --upgrade tensorboard_plugin_profile tensorflow_datasets tensor
 RUN pip3 install --upgrade torch torchvision torchaudio -f https://download.pytorch.org/whl/torch_stable.html
 
 #Fix issue with nvcc problem in 12.3 version
-RUN apt -y install cuda-nvcc-12-2 tensorrt
-RUN rm /etc/alternatives/cuda
-RUN ln -s /usr/local/cuda-12.2/ /etc/alternatives/cuda
-RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1
+#RUN apt -y install cuda-nvcc-12-2 tensorrt
+#RUN rm /etc/alternatives/cuda
+#RUN ln -s /usr/local/cuda-12.2/ /etc/alternatives/cuda
+#RUN ln -s /usr/local/cuda/lib64/stubs/libcuda.so /usr/local/cuda/lib64/stubs/libcuda.so.1
 ############################################
 
 ##Create users
