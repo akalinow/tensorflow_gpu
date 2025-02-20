@@ -4,16 +4,17 @@ FROM tensorflow/tensorflow:latest-gpu
 # Define who is responsible for this Dockerifle
 LABEL maintainer="Artur.Kalinowski@fuw.edu.pl"
 
+
 USER root
 RUN apt-get update
 RUN apt -y install \
-	python3 python3-pip \
+	python3-pip \
 	python3-numpy \
 	graphviz git \
 	screen \
 	cargo
 
-RUN /usr/bin/python3 -m pip install --upgrade pip	
+RUN python -m pip install --upgrade pip	
 
 # Install software tools
 RUN pip3 install --upgrade jsonschema attrs
@@ -24,8 +25,14 @@ RUN pip3 install --upgrade scikit-learn scipy scikit-image scikit-hep
 RUN pip3 install --upgrade seaborn plotly hide_code[lab] idx2numpy
 RUN pip3 install --upgrade uproot awkward awkward-pandas dask
 RUN pip3 install --upgrade opencv-contrib-python-headless
-#RUN pip3 install --upgrade tensorflow-model-analysis tensorflow-addons tensorflow-probability #tensorflow-text problems with python versions
-RUN pip3 install --upgrade tensorboard_plugin_profile tensorflow_datasets tensorflow-text
+RUN pip3 install --upgrade tensorflow_datasets tensorflow-text
+RUN pip3 install --upgrade tensorboard_plugin_profile
+RUN pip3 install --upgrade tensorflow-addons tensorflow-probability
+RUN pip3 install --upgrade tensorflow-model-analysis  
+RUN pip3 install --upgrade google-generativeai
+RUN pip install tensorflow[and-cuda] 
+
+#Install pytorch
 RUN pip3 install --upgrade torch torchvision torchaudio -f https://download.pytorch.org/whl/torch_stable.html
 
 #Fix issue with nvcc problem in 12.3 version
