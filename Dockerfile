@@ -70,3 +70,5 @@ RUN groupadd -g 29916 user1 && \
      useradd -m -r -u 29916 -g user1 user1
 
 USER jovyan
+WORKDIR /home/jovyan
+ENV SHELL=/bin/bash
