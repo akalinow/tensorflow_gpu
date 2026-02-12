@@ -1,11 +1,17 @@
 # Use the official centos image as parent image
 FROM akalinow/tensorflow-gpu:latest
 
-# Define who is responsible for this Dockerifle
-MAINTAINER Artur Kalinowski <Artur.Kalinowski@fuw.edu.pl>
+# Define who is responsible for this Dockerfile
+LABEL maintainer="Artur.Kalinowski@fuw.edu.pl"
+
 
 USER root
-# Install software tools
-RUN pip3 install --upgrade dask
+RUN apt-get update
+RUN apt -y install \
+	cmake \
+	libboost-all-dev
+#	cargo
 
-USER jupyter
+
+RUN pip3 install --upgrade iminuit
+RUN pip3 install --upgrade nbdime
