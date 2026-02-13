@@ -49,7 +49,7 @@ RUN pip3 install --upgrade nvidia-cublas-cu12 nvidia-cuda-cupti-cu12 nvidia-cuda
 						   nvidia-ml-py nvidia-nccl-cu12 nvidia-nvcomp-cu12 nvidia-nvjitlink-cu12 nvidia-nvtx-cu12                      
 
 #Install pytorch
-#RUN pip3 install --upgrade torch torchvision torchaudio -f https://download.pytorch.org/whl/torch_stable.html
+RUN pip3 install --upgrade torch torchvision torchaudio -f https://download.pytorch.org/whl/torch_stable.html
 
 #Fix issue with nvcc problem in 12.3 version
 #RUN apt -y install cuda-nvcc-12-2 tensorrt
@@ -64,11 +64,10 @@ RUN chmod +x /opt/scripts/start-jupyter.sh
 
 ##Create users
 RUN groupadd -g 1000 jovyan && \
-     useradd -m -r -u 1000 -g jovyan jovyan
+     useradd -m -r -u 1000 -g jovyan -s /bin/bash jovyan
 
 RUN groupadd -g 29916 user1 && \
-     useradd -m -r -u 29916 -g user1 user1
+     useradd -m -r -u 29916 -g user1 -s /bin/bash user1
 
 USER jovyan
 WORKDIR /home/jovyan
-ENV SHELL=/bin/bash
